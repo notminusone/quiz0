@@ -57,7 +57,7 @@ def part12():
 		print('name:' + name)
 		cnxn = pyodbc.connect('Driver={ODBC Driver 17 for SQL Server};Server=tcp:notminusone.database.windows.net,1433;Database=notminusoneDatabase;Uid=not-1;Pwd={0626Fuyi};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
 		cursor = cnxn.cursor()
-		cursor.execute("select * from data where Name='Bob'")
+		cursor.execute("select * from data where Name=?",name)
 		row = cursor.fetchone()
 		print(row)
 		if row is not None:
@@ -74,10 +74,10 @@ def part12():
 def page_not_found(error):
 	return render_template('404.html',title='404')
 
-# @app.errorhandler(500)
-# @app.route("/error500")
-# def requests_error(error):
-# 	return render_template('500.html',title='500')
+@app.errorhandler(500)
+@app.route("/error500")
+def requests_error(error):
+	return render_template('500.html',title='500')
 
 
 if __name__ == '__main__':
