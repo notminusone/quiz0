@@ -55,7 +55,7 @@ def part12():
 	if request.method=='POST':
 		name = request.form["name"]
 		print('name:' + name)
-		cnxn = pyodbc.connect('Driver={ODBC Driver 18 for SQL Server};Server=tcp:notminusone.database.windows.net,1433;Database=notminusoneDatabase;Uid=not-1;Pwd={0626Fuyi};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
+		cnxn = pyodbc.connect('Driver={ODBC Driver 17 for SQL Server};Server=tcp:notminusone.database.windows.net,1433;Database=notminusoneDatabase;Uid=not-1;Pwd={0626Fuyi};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
 		cursor = cnxn.cursor()
 		cursor.execute("select * from data where Name='Bob'")
 		row = cursor.fetchone()
