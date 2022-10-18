@@ -1,0 +1,21 @@
+{% extends "base.html" %}
+
+{% block app_content %}
+<div
+    style="width: 100%; display: flex;flex-direction:column;justify-content:center;align-items:center;text-align:center;">
+    <table class="table table-striped table-bordered table-hover table-condensed" style="width: 60%; margin:auto">
+        <tr>
+            <th>Name</th>
+            <th>Width</th>
+            <th>Height</th>
+        </tr>
+        {% for pic in pic_list %}
+        <tr>
+            <td>{{ pic.name }}</td>
+            <td>{{ pic.width }}</td>
+            <td>{{ pic.height }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+</div>
+{% endblock %}
