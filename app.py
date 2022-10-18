@@ -18,17 +18,13 @@ from PIL import Image
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 
-# app.config['SECRET_KEY'] = '0626fuyi'
-# server = 'notminusone.database.windows.net'
-# database = 'notminusoneDatabase'
-# username = 'not-1'
-# password = '0626Fuyi' 
-# driver= '{ODBC Driver 18 for SQL Server}'
-server = 'donghe.database.windows.net'
-database = 'db-quiz0'
-username = 'donghe'
-password = 'D20175242.' 
+app.config['SECRET_KEY'] = '0626fuyi'
+server = 'notminusone.database.windows.net'
+database = 'notminusoneDatabase'
+username = 'not-1'
+password = '0626Fuyi' 
 driver= '{ODBC Driver 18 for SQL Server}'
+# 
 # ROUTES!
 @app.route('/')
 def part10():
@@ -60,7 +56,7 @@ def part12():
 		name = request.form["name"]
 		cnxn = pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
 		cursor = cnxn.cursor()
-		cursor.execute("select * from data where Name=?",name)
+		cursor.execute("select * from data where Name=Bob")
 		row = cursor.fetchone()
 		if row is not None:
 			return render_template('part12.html',part12_active = "active",data = {
