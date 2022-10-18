@@ -18,8 +18,12 @@ from PIL import Image
 app = Flask(__name__)
 bootstrap = Bootstrap(app)
 
-app.config['SECRET_KEY'] = 'jxh1896'
-
+app.config['SECRET_KEY'] = '0626fuyi'
+server = 'notminusone.database.windows.net'
+database = 'notminusoneDatabase'
+username = 'not-1'
+password = '0626Fuyi' 
+driver= '{ODBC Driver 18 for SQL Server}'
 # ROUTES!
 @app.route('/')
 def part10():
@@ -50,7 +54,7 @@ def part12():
 		return render_template('part12.html',part12_active = "active",title="Part 12")
 	if request.method=='POST':
 		name = request.form["name"]
-		cnxn = pyodbc.connect('Driver={ODBC Driver 18 for SQL Server};Server=tcp:notminusone.database.windows.net,1433;Database=notminusoneDatabase;Uid=not-1;Pwd=0626Fuyi;Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
+		cnxn = pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
 		cursor = cnxn.cursor()
 		cursor.execute("select Name,Keywords,Picture from data where Name=?",name)
 		row = cursor.fetchone()
