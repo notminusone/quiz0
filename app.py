@@ -54,10 +54,12 @@ def part12():
 		return render_template('part12.html',part12_active = "active",title="Part 12")
 	if request.method=='POST':
 		name = request.form["name"]
+		print('name:' + name)
 		cnxn = pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
 		cursor = cnxn.cursor()
-		cursor.execute("select * from data where Name=Bob")
+		cursor.execute("select * from data where Name='Bob'")
 		row = cursor.fetchone()
+		print(row)
 		if row is not None:
 			return render_template('part12.html',part12_active = "active",data = {
 				'name':row[0],
