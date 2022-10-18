@@ -32,7 +32,6 @@ def part10():
 @app.route('/part11')
 def part11():
 	pic_list = []
-	# url_list = ["https://jxh1896.blob.core.windows.net/jxh1896/chip.jpg","https://jxh1896.blob.core.windows.net/jxh1896/curly.png","https://jxh1896.blob.core.windows.net/jxh1896/moe.jpg","https://jxh1896.blob.core.windows.net/jxh1896/pluto.jpg"]
 	url_list = ["static/alice.jpg","static/pluto.jpg","static/mars.jpg","static/curly.png","static/moe.jpg","static/chip.jpg"]
 	for url in url_list:
 		# response = requests.get(url)
@@ -54,7 +53,7 @@ def part12():
 		return render_template('part12.html',part12_active = "active",title="Part 12")
 	if request.method=='POST':
 		name = request.form["name"]
-		cnxn = pyodbc.connect('DRIVER='+driver+';SERVER=tcp:'+server+';PORT=1433;DATABASE='+database+';UID='+username+';PWD='+ password)
+		cnxn = pyodbc.connect('Driver={ODBC Driver 18 for SQL Server};Server=tcp:jxh1896.database.windows.net,1433;Database=jxh1896;Uid=jxh1896;Pwd={Jd28936418};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
 		cursor = cnxn.cursor()
 		cursor.execute("select Name,Keywords,Picture from data where Name=?",name)
 		row = cursor.fetchone()
