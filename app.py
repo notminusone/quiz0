@@ -57,7 +57,7 @@ def part12():
 		print('name:' + name)
 		cnxn = pyodbc.connect('Driver={ODBC Driver 17 for SQL Server};Server=tcp:notminusone.database.windows.net,1433;Database=notminusoneDatabase;Uid=not-1;Pwd={0626Fuyi};Encrypt=yes;TrustServerCertificate=no;Connection Timeout=30;')
 		cursor = cnxn.cursor()
-		cursor.execute("select * from data where Name=?",name)
+		cursor.execute("select Name,Keywords,Picture from data where Name=?",name)
 		row = cursor.fetchone()
 		print(row)
 		if row is not None:
